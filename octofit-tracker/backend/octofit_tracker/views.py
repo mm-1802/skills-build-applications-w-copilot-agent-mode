@@ -6,9 +6,10 @@ from .models import User, Team, Activity, Leaderboard, Workout
 
 @api_view(['GET', 'POST'])
 def api_root(request, format=None):
-    if request.method == 'POST':
-        return Response({"message": "POST request received"}, status=status.HTTP_201_CREATED)
-    base_url = 'http://localhost:8000/'
+    # Use the Codespace URL and localhost fallback
+    codespace_url = 'https://literate-space-funicular-69w6jxwgqx65hx6vv-8000.app.github.dev/'
+    localhost_url = 'http://localhost:8000/'
+    base_url = codespace_url if 'app.github.dev' in request.get_host() else localhost_url
     return Response({
         'users': base_url + 'api/users/?format=api',
         'teams': base_url + 'api/teams/?format=api',
