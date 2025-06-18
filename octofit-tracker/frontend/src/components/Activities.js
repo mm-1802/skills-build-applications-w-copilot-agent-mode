@@ -4,7 +4,7 @@ function Activities() {
   const [activities, setActivities] = useState([]);
 
   useEffect(() => {
-    fetch('https://literate-space-funicular-69w6jxwgqx65hx6vv-8000.app.github.dev/api/activity/')
+    fetch('https://literate-space-funicular-69w6jxwgqx65hx6vv-8000.app.github.dev/api/activities/')
       .then(res => res.json())
       .then(data => setActivities(data));
   }, []);
